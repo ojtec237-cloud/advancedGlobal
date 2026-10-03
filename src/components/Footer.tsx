@@ -100,46 +100,46 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="sdl-pro-footer-wrapper">
+    <footer className="agl-pro-footer-wrapper">
       {/* 1. TRUST FEATURE STRIP */}
       {showTrustStrip && (
-        <div className="sdl-footer-trust-strip">
-          <div className="sdl-container-wide sdl-trust-grid">
-            <div className="sdl-trust-card">
-              <div className="sdl-trust-icon">
+        <div className="agl-footer-trust-strip">
+          <div className="agl-container-wide agl-trust-grid">
+            <div className="agl-trust-card">
+              <div className="agl-trust-icon">
                 <Globe size={24} />
               </div>
-              <div className="sdl-trust-info">
+              <div className="agl-trust-info">
                 <h4>Worldwide Coverage</h4>
                 <p>Air, ocean and road, connected.</p>
               </div>
             </div>
 
-            <div className="sdl-trust-card">
-              <div className="sdl-trust-icon">
+            <div className="agl-trust-card">
+              <div className="agl-trust-icon">
                 <Clock size={24} />
               </div>
-              <div className="sdl-trust-info">
+              <div className="agl-trust-info">
                 <h4>Live Milestones</h4>
                 <p>Every hand-off scanned and time-stamped.</p>
               </div>
             </div>
 
-            <div className="sdl-trust-card">
-              <div className="sdl-trust-icon">
+            <div className="agl-trust-card">
+              <div className="agl-trust-icon">
                 <Layers size={24} />
               </div>
-              <div className="sdl-trust-info">
+              <div className="agl-trust-info">
                 <h4>Piece-Level Labels</h4>
                 <p>Every carton individually barcoded.</p>
               </div>
             </div>
 
-            <div className="sdl-trust-card">
-              <div className="sdl-trust-icon">
+            <div className="agl-trust-card">
+              <div className="agl-trust-icon">
                 <ShieldCheck size={24} />
               </div>
-              <div className="sdl-trust-info">
+              <div className="agl-trust-info">
                 <h4>Signed Delivery</h4>
                 <p>Digital proof of delivery on every shipment.</p>
               </div>
@@ -149,31 +149,31 @@ export const Footer: React.FC<FooterProps> = ({
       )}
 
       {/* 2. MAIN EXECUTIVE FOOTER */}
-      <div className="sdl-pro-footer-main">
+      <div className="agl-pro-footer-main">
         {/* Subtle Map Watermark Background */}
         <div className="footer-world-map-bg" />
         
         {/* Glowing Accent Corner Swoosh */}
         <div className="footer-accent-swoosh" />
 
-        <div className="sdl-container-wide footer-content-relative">
-          <div className="sdl-pro-footer-grid">
+        <div className="agl-container-wide footer-content-relative">
+          <div className="agl-pro-footer-grid">
             {/* Column 1: Brand & Tagline */}
-            <div className="sdl-pro-brand-col">
-              <a className="sdl-pro-footer-logo" href={hrefFor('home')} onClick={go('home')}>
+            <div className="agl-pro-brand-col">
+              <a className="agl-pro-footer-logo" href={hrefFor('home')} onClick={go('home')}>
                 <img
                   src={LOGO_WHITE}
                   alt={LOGO_ALT}
-                  className="sdl-pro-footer-logo-img"
+                  className="agl-pro-footer-logo-img"
                 />
               </a>
 
-              <p className="sdl-pro-brand-desc">
+              <p className="agl-pro-brand-desc">
                 Express, freight and secure cargo across borders, with one tracking ID and one accountable team from pickup to proof of delivery.
               </p>
 
               {SOCIAL_LINKS.some(s => SOCIAL[s.key]) && (
-                <div className="sdl-pro-socials">
+                <div className="agl-pro-socials">
                   {SOCIAL_LINKS.filter(s => SOCIAL[s.key]).map(({ key, label, Icon }) => (
                     <a key={key} href={SOCIAL[key]} className="pro-social-btn" aria-label={label} target="_blank" rel="noopener noreferrer">
                       <Icon size={15} />
@@ -182,7 +182,7 @@ export const Footer: React.FC<FooterProps> = ({
                 </div>
               )}
 
-              <div className="sdl-pro-faster-tagline font-mono">
+              <div className="agl-pro-faster-tagline font-mono">
                 <span>{TAGLINE.toUpperCase()}.</span>
                 <div className="tagline-bar" />
               </div>
@@ -190,12 +190,12 @@ export const Footer: React.FC<FooterProps> = ({
 
             {/* Columns 2–5: Services · Company · Support · Legal */}
             {FOOTER_COLUMNS.map(({ title, links }) => (
-              <nav key={title} className="sdl-pro-links-col" aria-label={title}>
-                <h4 className="sdl-pro-col-title">
+              <nav key={title} className="agl-pro-links-col" aria-label={title}>
+                <h4 className="agl-pro-col-title">
                   {title}
                   <span className="title-accent-dash" />
                 </h4>
-                <ul className="sdl-pro-links-list">
+                <ul className="agl-pro-links-list">
                   {links.map(({ label, page, param }) => (
                     <li key={label}>
                       <a href={hrefFor(page, param)} onClick={go(page, param)}>
@@ -210,7 +210,7 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           {/* 3. BOTTOM BAR */}
-          <div className="sdl-pro-footer-bottom">
+          <div className="agl-pro-footer-bottom">
             <div className="pro-copy-text">
               © {new Date().getFullYear()} {LEGAL_NAME}. All rights reserved.
               {address && <> · {address}</>}

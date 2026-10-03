@@ -35,16 +35,16 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialSection = 'privacy'
   const doc = docs.find((d) => d.id === activeDoc) || docs[0];
 
   return (
-    <div className="sdl-page-legal">
-      <section className="sdl-legal-hero">
+    <div className="agl-page-legal">
+      <section className="agl-legal-hero">
         <div className="legal-hero-bg-overlay" />
-        <div className="sdl-container-wide legal-hero-inner">
+        <div className="agl-container-wide legal-hero-inner">
           <h1 className="legal-hero-title animate-fade-in">Legal</h1>
         </div>
       </section>
 
-      <div className="sdl-container-wide sdl-legal-content-wrap">
-        <aside className="sdl-legal-sidebar">
+      <div className="agl-container-wide agl-legal-content-wrap">
+        <aside className="agl-legal-sidebar">
           <div className="legal-sidebar-card">
             <nav className="legal-nav-list" aria-label="Legal pages">
               {docs.map((d) => {
@@ -70,7 +70,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ initialSection = 'privacy'
           </div>
         </aside>
 
-        <main className="sdl-legal-document animate-fade-in">
+        <main className="agl-legal-document animate-fade-in">
           <div className="legal-doc-header">
             <h2>{doc.title}</h2>
             <div className="doc-meta-bar">

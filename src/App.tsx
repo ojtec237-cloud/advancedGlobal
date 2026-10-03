@@ -433,13 +433,13 @@ function MainAppContent() {
   }
 
   return (
-    <div className="sdl-app-shell">
+    <div className="agl-app-shell">
       <Header
         activePage={currentPage}
         onNavigate={handleNavigate}
       />
 
-      <main className="sdl-main-view">
+      <main className="agl-main-view">
         {isTrackSearching ? (
           <TrackingLoadingScreen query={trackSearchQuery} />
         ) : (

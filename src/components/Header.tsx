@@ -69,14 +69,14 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sdl-header-wrapper">
-      <button type="button" className="sdl-skip-link" onClick={skipToContent}>
+    <header className="agl-header-wrapper">
+      <button type="button" className="agl-skip-link" onClick={skipToContent}>
         Skip to main content
       </button>
       {/* 1. TOP UTILITY BAR (Hidden completely on mobile to eliminate clutter) */}
-      <div className="sdl-topbar hide-mobile-topbar">
-        <div className="sdl-container-wide sdl-topbar-inner">
-          <div className="sdl-topbar-left">
+      <div className="agl-topbar hide-mobile-topbar">
+        <div className="agl-container-wide agl-topbar-inner">
+          <div className="agl-topbar-left">
             <div className="topbar-item">
               <Clock size={13} className="text-emerald" />
               <span>24/7 Global Support</span>
@@ -104,21 +104,21 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* 2. MAIN NAVIGATION BAR */}
-      <div className="sdl-main-header">
-        <div className="sdl-container-wide sdl-header-inner">
+      <div className="agl-main-header">
+        <div className="agl-container-wide agl-header-inner">
           {/* Brand Logo */}
-          <a href="#/" className="sdl-logo-wrap" onClick={goHome} aria-label={`${COMPANY} home`}>
+          <a href="#/" className="agl-logo-wrap" onClick={goHome} aria-label={`${COMPANY} home`}>
             <img
               src={LOGO}
               alt={LOGO_ALT}
-              className="sdl-brand-logo-img"
+              className="agl-brand-logo-img"
               onError={(e) => {
                 const target = e.currentTarget;
                 target.style.display = 'none';
                 const parent = target.parentElement;
-                if (parent && !parent.querySelector('.sdl-fallback-logo')) {
+                if (parent && !parent.querySelector('.agl-fallback-logo')) {
                   const fallback = document.createElement('div');
-                  fallback.className = 'sdl-fallback-logo';
+                  fallback.className = 'agl-fallback-logo';
                   fallback.textContent = COMPANY;
                   parent.appendChild(fallback);
                 }
@@ -127,52 +127,52 @@ export const Header: React.FC<HeaderProps> = ({
           </a>
 
           {/* Desktop Nav Links */}
-          <nav className="sdl-nav-links">
+          <nav className="agl-nav-links">
             <button
               type="button"
-              className={`sdl-nav-link ${activePage === 'track' ? 'active' : ''}`}
+              className={`agl-nav-link ${activePage === 'track' ? 'active' : ''}`}
               onClick={() => handleNav('track')}
             >
               Track
             </button>
             <button
               type="button"
-              className={`sdl-nav-link ${activePage === 'ship' ? 'active' : ''}`}
+              className={`agl-nav-link ${activePage === 'ship' ? 'active' : ''}`}
               onClick={() => handleNav('ship')}
             >
               Ship
             </button>
             <button
               type="button"
-              className={`sdl-nav-link ${activePage === 'services' ? 'active' : ''}`}
+              className={`agl-nav-link ${activePage === 'services' ? 'active' : ''}`}
               onClick={() => handleNav('services')}
             >
               Services
             </button>
             <button
               type="button"
-              className={`sdl-nav-link ${activePage === 'locations' ? 'active' : ''}`}
+              className={`agl-nav-link ${activePage === 'locations' ? 'active' : ''}`}
               onClick={() => handleNav('locations')}
             >
               Network
             </button>
             <button
               type="button"
-              className={`sdl-nav-link ${activePage === 'about' ? 'active' : ''}`}
+              className={`agl-nav-link ${activePage === 'about' ? 'active' : ''}`}
               onClick={() => handleNav('about')}
             >
               About
             </button>
             <button
               type="button"
-              className={`sdl-nav-link ${activePage === 'help' ? 'active' : ''}`}
+              className={`agl-nav-link ${activePage === 'help' ? 'active' : ''}`}
               onClick={() => handleNav('help')}
             >
               Help
             </button>
             <button
               type="button"
-              className={`sdl-nav-link ${activePage === 'contact' ? 'active' : ''}`}
+              className={`agl-nav-link ${activePage === 'contact' ? 'active' : ''}`}
               onClick={() => handleNav('contact')}
             >
               Contact
@@ -180,10 +180,10 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
 
           {/* Header Primary Action Button */}
-          <div className="sdl-header-actions">
+          <div className="agl-header-actions">
             <button
               type="button"
-              className="sdl-btn-top-quote"
+              className="agl-btn-top-quote"
               onClick={() => handleNav('quote')}
             >
               <Calculator size={15} />
@@ -194,7 +194,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Mobile Hamburger Toggle Button */}
           <button
             type="button"
-            className={`sdl-mobile-toggle-btn ${mobileMenuOpen ? 'is-active' : ''}`}
+            className={`agl-mobile-toggle-btn ${mobileMenuOpen ? 'is-active' : ''}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
@@ -206,9 +206,9 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* 3. EXECUTIVE MOBILE DRAWER OVERLAY */}
       {mobileMenuOpen && (
-        <div className="sdl-drawer-backdrop" onClick={() => setMobileMenuOpen(false)}>
+        <div className="agl-drawer-backdrop" onClick={() => setMobileMenuOpen(false)}>
           <div
-            className="sdl-mobile-drawer-sheet animate-slide-left"
+            className="agl-mobile-drawer-sheet animate-slide-left"
             role="dialog"
             aria-modal="true"
             aria-label="Menu"

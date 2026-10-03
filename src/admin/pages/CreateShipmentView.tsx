@@ -1326,7 +1326,7 @@ export const CreateShipmentView: React.FC<CreateShipmentViewProps> = ({
   // MAIN MULTI-STEP WORKSPACE VIEW
   // ----------------------------------------------------
   return (
-    <div className="sdl-create-shipment-workspace">
+    <div className="agl-create-shipment-workspace">
       {draftSavedToast && (
         <div className="draft-saved-toast animate-fade-in">
           <CheckCircle2 size={16} className="text-emerald" />
@@ -1800,7 +1800,7 @@ export const CreateShipmentView: React.FC<CreateShipmentViewProps> = ({
           {/* ---------------------------------------------------- */}
           {currentStep === 3 && (
             <div className="step-inner-content animate-fade-in">
-              <div className="sdl-heading-with-units admin-units-bar">
+              <div className="agl-heading-with-units admin-units-bar">
                 <span className="dim-label">Weights and dimensions in</span>
                 <UnitToggle />
               </div>

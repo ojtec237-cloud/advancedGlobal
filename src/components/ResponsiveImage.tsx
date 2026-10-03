@@ -45,7 +45,7 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   const priority = eager ? { fetchpriority: 'high' } : {};
 
   return (
-    <picture className={`sdl-responsive-picture ${className}`.trim()}>
+    <picture className={`agl-responsive-picture ${className}`.trim()}>
       {mobileName && (
         <>
           <source media={MOBILE_QUERY} type="image/webp" srcSet={srcSet(mobileName, 'webp')} sizes={sizes} />
@@ -54,7 +54,7 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
       )}
       <source type="image/webp" srcSet={srcSet(name, 'webp')} sizes={sizes} />
       <img
-        className={`sdl-responsive-image ${imgClassName}`.trim()}
+        className={`agl-responsive-image ${imgClassName}`.trim()}
         src={`/images/sdl/${name}-${largest(name)}.jpg`}
         srcSet={srcSet(name, 'jpg')}
         sizes={sizes}

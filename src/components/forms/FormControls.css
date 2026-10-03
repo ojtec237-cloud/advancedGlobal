@@ -1,25 +1,25 @@
 /* Shared international form controls: country picker, phone input, unit toggle */
 
-.sdl-country-select {
+.agl-country-select {
   position: relative;
   width: 100%;
 }
 
-.sdl-country-select input {
+.agl-country-select input {
   width: 100%;
   padding-right: 2.25rem;
 }
 
-.sdl-country-chevron {
+.agl-country-chevron {
   position: absolute;
   right: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--sdl-slate-500);
+  color: var(--agl-slate-500);
   pointer-events: none;
 }
 
-.sdl-country-list {
+.agl-country-list {
   position: absolute;
   z-index: 50;
   top: calc(100% + 4px);
@@ -30,97 +30,97 @@
   margin: 0;
   padding: 0.25rem;
   list-style: none;
-  background: var(--sdl-white);
-  border: 1px solid var(--sdl-slate-200);
-  border-radius: var(--sdl-radius-md);
-  box-shadow: var(--sdl-shadow-lg);
+  background: var(--agl-white);
+  border: 1px solid var(--agl-slate-200);
+  border-radius: var(--agl-radius-md);
+  box-shadow: var(--agl-shadow-lg);
 }
 
-.sdl-country-option {
+.agl-country-option {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
   padding: 0.5rem 0.625rem;
-  border-radius: var(--sdl-radius-sm);
+  border-radius: var(--agl-radius-sm);
   font-size: 0.875rem;
-  color: var(--sdl-ink-900);
+  color: var(--agl-ink-900);
   cursor: pointer;
 }
 
-.sdl-country-option small {
+.agl-country-option small {
   font-size: 0.6875rem;
-  color: var(--sdl-slate-500);
+  color: var(--agl-slate-500);
   flex-shrink: 0;
 }
 
-.sdl-country-option.active {
-  background: var(--sdl-accent-50);
+.agl-country-option.active {
+  background: var(--agl-accent-50);
 }
 
-.sdl-country-option.selected span {
+.agl-country-option.selected span {
   font-weight: 700;
 }
 
-.sdl-country-empty {
+.agl-country-empty {
   padding: 0.5rem 0.625rem;
   font-size: 0.875rem;
-  color: var(--sdl-slate-500);
+  color: var(--agl-slate-500);
 }
 
-.sdl-phone-input {
+.agl-phone-input {
   display: grid;
   grid-template-columns: minmax(96px, 7.5rem) 1fr;
   gap: 0.5rem;
   width: 100%;
 }
 
-.sdl-phone-input .sdl-phone-code {
+.agl-phone-input .agl-phone-code {
   min-width: 0;
   padding-right: 0.25rem;
 }
 
-.sdl-phone-input .sdl-phone-number {
+.agl-phone-input .agl-phone-number {
   min-width: 0;
 }
 
-.sdl-phone-hint {
+.agl-phone-hint {
   grid-column: 1 / -1;
   font-size: 0.75rem;
-  color: var(--sdl-warning-700);
+  color: var(--agl-warning-700);
 }
 
-.sdl-unit-toggle {
+.agl-unit-toggle {
   display: inline-flex;
-  border: 1px solid var(--sdl-slate-200);
+  border: 1px solid var(--agl-slate-200);
   border-radius: 9999px;
   padding: 2px;
-  background: var(--sdl-white);
+  background: var(--agl-white);
 }
 
-.sdl-unit-toggle button {
+.agl-unit-toggle button {
   border: none;
   background: transparent;
   border-radius: 9999px;
   padding: 0.3rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--sdl-slate-600);
+  color: var(--agl-slate-600);
   cursor: pointer;
 }
 
-.sdl-unit-toggle button.active {
-  background: var(--sdl-ink-900);
-  color: var(--sdl-white);
+.agl-unit-toggle button.active {
+  background: var(--agl-ink-900);
+  color: var(--agl-white);
 }
 
-.sdl-unit-toggle button:focus-visible {
-  outline: 2px solid var(--sdl-accent-500);
+.agl-unit-toggle button:focus-visible {
+  outline: 2px solid var(--agl-accent-500);
   outline-offset: 1px;
 }
 
 /* A form section heading with the unit toggle on the right */
-.sdl-heading-with-units {
+.agl-heading-with-units {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -128,7 +128,7 @@
   flex-wrap: wrap;
 }
 
-.sdl-field-optional {
+.agl-field-optional {
   font-weight: 500;
-  color: var(--sdl-slate-500);
+  color: var(--agl-slate-500);
 }
