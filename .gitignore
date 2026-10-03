@@ -1,0 +1,13 @@
+node_modules/
+dist/
+dist-server/
+/data/
+.env
+*.local
+.claude/
+
+# Not for the repo: previous client history, old screenshots, unoptimised photo originals.
+# Leading slashes keep Public/images/ tracked.
+/docs/archive-sdl/
+/screens/
+/images/
