@@ -13,15 +13,16 @@ Its **System notes** section still describes how the code works; read it if you 
 ---
 
 ## Phase 0 — Baseline (≈5 min)
-- [ ] 0.1 `npm install`, `npm run build` (zero TS errors), `npm test`. Record pass/fail below.
-- [ ] 0.2 Add `/docs/archive-sdl/`, `/screens/`, `/images/` to `.gitignore` first, then `git init` (if needed), branch `agl-rebrand`, commit the baseline.
-- [ ] 0.3 Move the existing local database out of `data/` (keep a copy outside the project). AGL starts empty.
+- [x] 0.1 `npm install`, `npm run build` (zero TS errors), `npm test`. Record pass/fail below.
+- [x] 0.2 Add `/docs/archive-sdl/`, `/screens/`, `/images/` to `.gitignore` first, then `git init` (if needed), branch `agl-rebrand`, commit the baseline.
+- [x] 0.3 Move the existing local database out of `data/` (keep a copy outside the project). AGL starts empty. *(Nothing to move: `data/` was already empty, no `*.db` anywhere in the project, `.env` sets no `DB_PATH`.)*
 
 ### Baseline
 | Check | Result |
 |---|---|
-| `npm run build` | |
-| `npm test` | |
+| `npm install` | Pass (Node 22.14.0; 243 packages; postinstall build OK; npm audit reports 3 high-severity advisories, not actioned) |
+| `npm run build` | Pass, zero TS errors (Vite warns that the main chunk is 699 kB > 500 kB; pre-existing) |
+| `npm test` | Pass, 33/33 |
 
 ## Phase 1 — Identity strings (≈15 min, REBRAND_MAP §1–2)
 - [ ] 1.1 `src/config/brand.ts`: name, short name, legal name, email, domain, logo paths, `TRACKING_PREFIX = 'AGL'`.
@@ -92,3 +93,4 @@ Its **System notes** section still describes how the code works; read it if you 
 |---|---|---|
 | 2026-10-03 | docs | Prompt pack and docs rewritten for the AGL rebrand; previous client's tracker, map and prompts moved to `docs/archive-sdl/`. |
 | 2026-10-03 | docs | Logo `images/advanced-logo.png` wired into the docs (pipeline changes in BRAND_GUIDE §5; "ADVANCED" spelling flagged as #7). Photos switched to free unbranded Pexels/CC0; prompt 05 split into 05a (sourcing) and 05b (pipeline). |
+| 2026-10-03 | 0.1–0.3 | Baseline green (build clean, 33/33 tests). `.gitignore` gains `/docs/archive-sdl/`, `/screens/`, `/images/`; `git init`, branch `agl-rebrand`, baseline commit. `data/` was already empty. |
