@@ -4,18 +4,18 @@
 // Contact values left as '' are not known yet. UI that would show them must hide itself
 // (see useCompanyContact). Never fill these with made-up numbers or addresses.
 
-export const COMPANY = 'SDL Global Logistics';
-export const COMPANY_SHORT = 'SDL';
-export const LEGAL_NAME = 'SDL Global Logistics Ltd';
+export const COMPANY = 'Advance Global Logistics';
+export const COMPANY_SHORT = 'AGL';
+export const LEGAL_NAME = 'Advance Global Logistics Ltd';
 export const TAGLINE = 'Fast, Safe, Reliable';
 
-export const EMAIL = 'info@sdlgloballogistics.com';
-export const DOMAIN = 'sdlgloballogistics.com';
+export const EMAIL = 'info@advancegloballogistics.com';
+export const DOMAIN = 'advancegloballogistics.com';
 export const SITE_URL = `https://${DOMAIN}`;
 
 // Logo files in Public/brand (BRAND_GUIDE §6). Full colour on light surfaces, white on Ink.
-export const LOGO = '/brand/sdl-logo.png';
-export const LOGO_WHITE = '/brand/sdl-logo-white.png';
+export const LOGO = '/brand/agl-logo.png';
+export const LOGO_WHITE = '/brand/agl-logo-white.png';
 export const LOGO_ALT = COMPANY;
 
 // The admin console only opens on <ADMIN_SUBDOMAIN>.<DOMAIN> (plus localhost for development).
@@ -35,7 +35,7 @@ export const OPERATIONS_CENTRE = `${COMPANY_SHORT} Operations Centre`;
 export const INTAKE_DESK = `${COMPANY_SHORT} Intake Desk`;
 
 // Tracking ID = prefix + 5 characters, 8 total (BRAND_GUIDE §7).
-export const TRACKING_PREFIX = 'DLS';
+export const TRACKING_PREFIX = 'AGL';
 
 // TBD: supplied by the owner.
 export const PHONE = '';

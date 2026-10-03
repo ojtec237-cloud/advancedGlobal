@@ -25,9 +25,9 @@ Its **System notes** section still describes how the code works; read it if you 
 | `npm test` | Pass, 33/33 |
 
 ## Phase 1 — Identity strings (≈15 min, REBRAND_MAP §1–2)
-- [ ] 1.1 `src/config/brand.ts`: name, short name, legal name, email, domain, logo paths, `TRACKING_PREFIX = 'AGL'`.
-- [ ] 1.2 `index.html` meta/OG/JSON-LD + `Public/site.webmanifest` + `package.json` name (+ lock file).
-- [ ] 1.3 Server: `DB_FILE`, remove the old-brand migration, service name, `SESSION_COOKIE = 'agl.sid'`, track-route error text.
+- [x] 1.1 `src/config/brand.ts`: name, short name, legal name, email, domain, logo paths, `TRACKING_PREFIX = 'AGL'`.
+- [x] 1.2 `index.html` meta/OG/JSON-LD + `Public/site.webmanifest` + `package.json` name (+ lock file).
+- [x] 1.3 Server: `DB_FILE`, remove the old-brand migration, service name, `SESSION_COOKIE = 'agl.sid'`, track-route error text.
 - [ ] 1.4 References (`AGL-SL/TKT/INV`), tracking-ID examples and placeholders, `DocumentBrand`, `PAGE_META`, legal docs, localStorage keys, comments.
 - [ ] 1.5 Tests updated; `npm test` and `npm run build` pass.
 
@@ -63,6 +63,7 @@ Its **System notes** section still describes how the code works; read it if you 
 | 5 | Mailbox `info@advancegloballogistics.com` created | 5.3 |
 | 6 | ~~Tagline on the logo?~~ **Resolved:** the logo prints no tagline, so `TAGLINE` stays "Fast, Safe, Reliable". | 1.1 |
 | 7 | **Logo spelling, launch blocker:** the supplied logo reads "ADVANC**ED** GLOBAL LOGISTICS", but the registered name is **Advance** Global Logistics Ltd. Get a corrected logo from the designer before launch, ideally also as SVG. Drop it in at `images/advanced-logo.png` (or update the path) and re-run the script. | 3.1, 5.4 |
+| 8 | Not for the owner, noted for later tasks: `.env.example` still describes `SEED_DEMO_DATA` with "sample SDL demo shipments (DLS7K2M9 etc.)", but no code in `server/` reads `SEED_DEMO_DATA`. Comment is stale; clear it in the 1.4/5.1 sweep. | 1.4, 5.1 |
 
 **Still open from the previous build (they apply to AGL too; details in the archive tracker under the same numbers):**
 | Archive # | Item |
@@ -87,6 +88,7 @@ Its **System notes** section still describes how the code works; read it if you 
 | 2026-10-03 | Name confirmed as **Advance** Global Logistics Ltd, even though the supplied logo says "Advanced". The logo is used as is until the designer corrects it (Needs owner #7). Text is never changed to match the logo. |
 | 2026-10-03 | Photos: free stock only (Pexels License or CC0), no visible company branding, each logged in `images/free-*/SOURCES.md`. |
 | 2026-10-03 | CSS/class prefix renamed `sdl-` → `agl-` by script, so no trace of the previous brand remains. |
+| 2026-10-03 | Removed the one-time old-brand migration from `server/db.ts` (`OLD_BRAND_SETTINGS`, `OLD_BRAND_TEXT`, `replaceOldBrandText()`, `LEGACY_DB_FILE` and its startup warning). It only rewrote a database inherited from an earlier brand; AGL starts with an empty database, so it was dead code that hard-coded an old brand name. Every other migration is kept (REBRAND_MAP §2 C). |
 
 ## Change log
 | Date | Task | Summary |
@@ -94,3 +96,4 @@ Its **System notes** section still describes how the code works; read it if you 
 | 2026-10-03 | docs | Prompt pack and docs rewritten for the AGL rebrand; previous client's tracker, map and prompts moved to `docs/archive-sdl/`. |
 | 2026-10-03 | docs | Logo `images/advanced-logo.png` wired into the docs (pipeline changes in BRAND_GUIDE §5; "ADVANCED" spelling flagged as #7). Photos switched to free unbranded Pexels/CC0; prompt 05 split into 05a (sourcing) and 05b (pipeline). |
 | 2026-10-03 | 0.1–0.3 | Baseline green (build clean, 33/33 tests). `.gitignore` gains `/docs/archive-sdl/`, `/screens/`, `/images/`; `git init`, branch `agl-rebrand`, baseline commit. `data/` was already empty. |
+| 2026-10-03 | 1.1–1.3 | `brand.ts` set to AGL (prefix `AGL`, logo paths `agl-logo*.png`); `index.html`, manifest (`?v=4`), package name + lock file, `.env.example` DB path; server `DB_FILE` `agl_global.db`, old-brand migration removed, service name/startup log from `COMPANY`, cookie `agl.sid`, track 400 text from `TRACKING_PREFIX`. Build clean; 5 tracking-ID tests fail on hard-coded `DLS` until 1.5. |

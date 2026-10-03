@@ -39,19 +39,19 @@ The audit below was taken on 2026-10-03; re-run the greps in §5 because line nu
 ## 2. Where the brand lives (file checklist)
 
 **A. Single source of truth (do first; most of the UI follows automatically)**
-- [ ] `src/config/brand.ts`: `COMPANY`, `COMPANY_SHORT`, `LEGAL_NAME`, `EMAIL`, `DOMAIN`, `LOGO`, `LOGO_WHITE`, `TRACKING_PREFIX = 'AGL'`. Leave `PHONE`, `WHATSAPP`, `HQ_ADDRESS` and `SOCIAL` empty until the owner supplies them. **Do not copy the previous client's values.**
+- [x] `src/config/brand.ts`: `COMPANY`, `COMPANY_SHORT`, `LEGAL_NAME`, `EMAIL`, `DOMAIN`, `LOGO`, `LOGO_WHITE`, `TRACKING_PREFIX = 'AGL'`. Leave `PHONE`, `WHATSAPP`, `HQ_ADDRESS` and `SOCIAL` empty until the owner supplies them. **Do not copy the previous client's values.**
 
 **B. Static shell (not driven by brand.ts)**
-- [ ] `index.html`: `<title>`, description, canonical, all `og:*` / `twitter:*`, JSON-LD (`@id`, name, legalName, alternateName, url, logo, image, email). Bump the icon `?v=` cache-busters.
-- [ ] `Public/site.webmanifest`: name, short_name, description, icon `?v=`.
-- [ ] `package.json` name (+ regenerate the lock file).
-- [ ] `.env.example`: DB path example.
+- [x] `index.html`: `<title>`, description, canonical, all `og:*` / `twitter:*`, JSON-LD (`@id`, name, legalName, alternateName, url, logo, image, email). Bump the icon `?v=` cache-busters.
+- [x] `Public/site.webmanifest`: name, short_name, description, icon `?v=`.
+- [x] `package.json` name (+ regenerate the lock file).
+- [x] `.env.example`: DB path example.
 
 **C. Server**
-- [ ] `server/db.ts`: `DB_FILE = 'agl_global.db'`. **Remove** the one-time old-brand migration (`OLD_BRAND_SETTINGS`, `OLD_BRAND_TEXT`, the function that rewrites them, `LEGACY_DB_FILE` and its warning). It only rewrote a database inherited from an earlier brand; AGL starts empty, so it is dead code that hard-codes an old brand name. Keep every other migration. Record this in the tracker's Decisions log.
-- [ ] `server/index.ts`: health-check service name, startup log.
-- [ ] `server/middleware/auth.ts`: `SESSION_COOKIE` string and its comment only.
-- [ ] `server/routes/track.ts`: the 400 error text ("starting with DLS…") must use `TRACKING_PREFIX`, not a literal.
+- [x] `server/db.ts`: `DB_FILE = 'agl_global.db'`. **Remove** the one-time old-brand migration (`OLD_BRAND_SETTINGS`, `OLD_BRAND_TEXT`, the function that rewrites them, `LEGACY_DB_FILE` and its warning). It only rewrote a database inherited from an earlier brand; AGL starts empty, so it is dead code that hard-codes an old brand name. Keep every other migration. Record this in the tracker's Decisions log.
+- [x] `server/index.ts`: health-check service name, startup log.
+- [x] `server/middleware/auth.ts`: `SESSION_COOKIE` string and its comment only.
+- [x] `server/routes/track.ts`: the 400 error text ("starting with DLS…") must use `TRACKING_PREFIX`, not a literal.
 - [ ] `server/routes/*.ts`, `server/db.ts`: comments that mention SDL/DLS.
 
 **D. Shared + client code**
