@@ -63,7 +63,7 @@ The audit below was taken on 2026-10-03; re-run the greps in §5 because line nu
 - [x] `src/data/legalDocs.ts`: company name, short name, cookie name `agl.sid`, storage keys.
 - [ ] Alt text in pages for the four replaced photos (BRAND_GUIDE §7, CONTENT §12).
 - [x] localStorage keys (3).
-- [ ] CSS file header comments ("SDL GLOBAL LOGISTICS — …") in ~14 files; `tokens.css` header (describe the palette without naming a company).
+- [x] CSS file header comments ("SDL GLOBAL LOGISTICS — …") in ~14 files; `tokens.css` header (describe the palette without naming a company).
 
 **E. Assets + tests**
 - [ ] `scripts/optimize-images.mjs`: output names/paths, header comment, photo sources (BRAND_GUIDE §7).

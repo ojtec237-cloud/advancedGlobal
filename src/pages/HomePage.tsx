@@ -255,7 +255,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
         <ResponsiveImage
           name="hero-home"
           mobileName="hero-home-mobile"
-          alt="SDL Global Logistics truck at a container port at sunset, with a cargo ship, cranes and an SDL aircraft overhead"
+          alt="Truck at a container port at sunset, with a cargo ship, cranes and an aircraft overhead"
           eager
           sizes="100vw"
           className="corp-hero-media"

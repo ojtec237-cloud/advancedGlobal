@@ -1,11 +1,11 @@
 /* =========================================================================
-   SDL Global Logistics design system — tokens (BRAND_GUIDE.md §4)
-   Palette derived from the SDL logo: black #060606 and red #D3070B.
-   Primary = graphite (logo black), Accent = SDL red (500 = logo red),
+   Advance Global Logistics design system — tokens (BRAND_GUIDE.md §4)
+   Palette: graphite + red (black #060606, red #D3070B).
+   Primary = graphite, Accent = red (500 = #D3070B),
    Ink = deep surfaces. Status colours stay semantic, never brand colours.
    ========================================================================= */
 :root {
-  /* Brand: Primary (graphite, from the logo black) */
+  /* Brand: Primary (graphite) */
   --agl-primary-50: #FAFAFA;
   --agl-primary-100: #F4F4F4;
   --agl-primary-200: #E5E5E5;
@@ -17,7 +17,7 @@
   --agl-primary-800: #262626;
   --agl-primary-900: #171717;
 
-  /* Brand: Accent (SDL red; 500 is the exact logo red). On Ink backgrounds use 400 for
+  /* Brand: Accent (red; 500 is #D3070B). On Ink backgrounds use 400 for
      small text; 500 only for large text, icons and buttons (3.21:1 on Ink 950). */
   --agl-accent-50: #FFF2F0;
   --agl-accent-100: #FFE2DE;

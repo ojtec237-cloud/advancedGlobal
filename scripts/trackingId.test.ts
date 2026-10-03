@@ -53,7 +53,7 @@ test('isValidTrackingId: strict ^AGL[2-9A-HJ-NP-Z]{5}$', () => {
   for (const ok of ['AGL7K2M9', 'AGLQ4X8T', 'AGL22222', 'AGLZZZZZ']) assert.ok(isValidTrackingId(ok), ok);
   for (const bad of [
     '', 'AGL7K2M', 'AGL7K2M9X', 'agl7k2m9', 'AGL7K2M0', 'AGL7K2MO', 'AGL7K2M1', 'AGL7K2MI',
-    'DXP7K2M9', 'AGL 7K2M9', 'AGL7K2M9-01', 'RTO-AGL7K2M9', 'DXP-2026-ABCDEFGH'
+    'XYZ7K2M9', 'AGL 7K2M9', 'AGL7K2M9-01', 'RTO-AGL7K2M9', 'XYZ-2026-ABCDEFGH'
   ]) assert.ok(!isValidTrackingId(bad), bad);
 });
 
@@ -72,7 +72,7 @@ test('parsePieceLabel: AGLXXXXX-NN resolves to parent and piece number', () => {
 test('parseTrackingInput: IDs and child labels resolve to the 8-character parent', () => {
   assert.deepEqual(parseTrackingInput('agl 7k2-m9'), { trackingId: 'AGL7K2M9' });
   assert.deepEqual(parseTrackingInput('AGL7K2M9-03'), { trackingId: 'AGL7K2M9', piece: 3 });
-  assert.equal(parseTrackingInput('DXP-2026-ABCD1234'), null);
+  assert.equal(parseTrackingInput('XYZ-2026-ABCD1234'), null);
   assert.equal(parseTrackingInput('hello'), null);
   assert.equal(parseTrackingInput(''), null);
 });
