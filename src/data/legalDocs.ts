@@ -25,7 +25,7 @@ export interface LegalDoc {
 /** Shown on every legal page. Update it whenever the text below changes. */
 export const LEGAL_LAST_UPDATED = '29 September 2026';
 
-// TODO(owner + lawyer): {{JURISDICTION}} — the country where SDL Global Logistics Ltd is
+// TODO(owner + lawyer): {{JURISDICTION}} — the country where the company is
 // registered. Until it is known the governing-law clause below names no country (nothing is
 // shown in its place); replace GOVERNING_LAW with the named jurisdiction once confirmed.
 const GOVERNING_LAW = `These terms are governed by the laws of the country in which ${LEGAL_NAME} is registered. Nothing in them takes away rights you have under the consumer law of the country where you live.`;
@@ -46,7 +46,7 @@ export function legalDocs({ email, address }: LegalContact): LegalDoc[] {
         {
           heading: 'Who we are',
           body: [
-            `${LEGAL_NAME} ("SDL", "we") runs this website and carries the shipments booked through it.${address ? ` Our head office is at ${address}.` : ''} For anything about your personal data, write to ${email}.`
+            `${LEGAL_NAME} ("AGL", "we") runs this website and carries the shipments booked through it.${address ? ` Our head office is at ${address}.` : ''} For anything about your personal data, write to ${email}.`
           ]
         },
         {
@@ -230,7 +230,7 @@ export function legalDocs({ email, address }: LegalContact): LegalDoc[] {
         {
           heading: 'Cookies we use',
           body: [
-            'We use one essential cookie, sdl.sid. It keeps SDL staff signed in to our operations console for up to 12 hours. It is not set for visitors to the public website.',
+            'We use one essential cookie, agl.sid. It keeps AGL staff signed in to our operations console for up to 12 hours. It is not set for visitors to the public website.',
             'We do not use analytics or advertising cookies. If we add analytics, we will update this page and ask for your consent where the law requires it.'
           ]
         },
@@ -239,9 +239,9 @@ export function legalDocs({ email, address }: LegalContact): LegalDoc[] {
           body: [
             "Some pages remember a few choices in your browser's local storage. This data stays on your device and is not sent to us:",
             [
-              'sdl_recent_tracking: tracking IDs you looked up recently, so you can open them again.',
-              'sdl_units: whether you prefer metric or imperial units.',
-              'sdl_live_shipment_stream: the latest update for a shipment you are viewing, so other open tabs stay in step.'
+              'agl_recent_tracking: tracking IDs you looked up recently, so you can open them again.',
+              'agl_units: whether you prefer metric or imperial units.',
+              'agl_live_shipment_stream: the latest update for a shipment you are viewing, so other open tabs stay in step.'
             ],
             'You can clear these at any time in your browser settings.'
           ]

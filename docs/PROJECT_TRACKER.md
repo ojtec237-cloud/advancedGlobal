@@ -28,8 +28,8 @@ Its **System notes** section still describes how the code works; read it if you 
 - [x] 1.1 `src/config/brand.ts`: name, short name, legal name, email, domain, logo paths, `TRACKING_PREFIX = 'AGL'`.
 - [x] 1.2 `index.html` meta/OG/JSON-LD + `Public/site.webmanifest` + `package.json` name (+ lock file).
 - [x] 1.3 Server: `DB_FILE`, remove the old-brand migration, service name, `SESSION_COOKIE = 'agl.sid'`, track-route error text.
-- [ ] 1.4 References (`AGL-SL/TKT/INV`), tracking-ID examples and placeholders, `DocumentBrand`, `PAGE_META`, legal docs, localStorage keys, comments.
-- [ ] 1.5 Tests updated; `npm test` and `npm run build` pass.
+- [x] 1.4 References (`AGL-SL/TKT/INV`), tracking-ID examples and placeholders, `DocumentBrand`, `PAGE_META`, legal docs, localStorage keys, comments.
+- [x] 1.5 Tests updated; `npm test` and `npm run build` pass.
 
 ## Phase 2 — CSS prefix sweep (≈10 min, REBRAND_MAP §3)
 - [ ] 2.1 Scripted `--sdl-`/`sdl-` → `--agl-`/`agl-`; CSS header comments; `tokens.css` header. Visual parity check at 375/1440.
@@ -97,3 +97,4 @@ Its **System notes** section still describes how the code works; read it if you 
 | 2026-10-03 | docs | Logo `images/advanced-logo.png` wired into the docs (pipeline changes in BRAND_GUIDE §5; "ADVANCED" spelling flagged as #7). Photos switched to free unbranded Pexels/CC0; prompt 05 split into 05a (sourcing) and 05b (pipeline). |
 | 2026-10-03 | 0.1–0.3 | Baseline green (build clean, 33/33 tests). `.gitignore` gains `/docs/archive-sdl/`, `/screens/`, `/images/`; `git init`, branch `agl-rebrand`, baseline commit. `data/` was already empty. |
 | 2026-10-03 | 1.1–1.3 | `brand.ts` set to AGL (prefix `AGL`, logo paths `agl-logo*.png`); `index.html`, manifest (`?v=4`), package name + lock file, `.env.example` DB path; server `DB_FILE` `agl_global.db`, old-brand migration removed, service name/startup log from `COMPANY`, cookie `agl.sid`, track 400 text from `TRACKING_PREFIX`. Build clean; 5 tracking-ID tests fail on hard-coded `DLS` until 1.5. |
+| 2026-10-03 | 1.4–1.5 | `AGL-SL/TKT/INV` + `REFERENCE_PATTERN`; every tracking-ID example, placeholder and help text `DLS…` → `AGL…`; `PAGE_META` (default description built from `COMPANY`), `DocumentBrand` pouch + footer, legal docs (`"AGL"`, `agl.sid`, storage keys), help article, localStorage keys `agl_recent_tracking`/`agl_units`/`agl_live_shipment_stream` (+ admin draft key `agl_admin_shipment_draft`); ID/reference comments in src + server; service file headers made brand-neutral. Tests moved to AGL (invalid samples still invalid). 33/33 tests, build clean. API via Vite proxy: "agl 7k2-m9" → 404 for AGL7K2M9 (accepted), "DLS7K2M9" → 400. Photo alt text left for 3.2, CSS headers for 2.1. |

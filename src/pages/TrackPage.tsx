@@ -68,7 +68,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
   // Load recent searches from localStorage
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('sdl_recent_tracking');
+      const saved = localStorage.getItem('agl_recent_tracking');
       if (saved) {
         setRecentSearches(JSON.parse(saved).slice(0, 4));
       }
@@ -83,7 +83,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
       const existing = recentSearches.filter(n => n.toUpperCase() !== clean);
       const updated = [clean, ...existing].slice(0, 4);
       setRecentSearches(updated);
-      localStorage.setItem('sdl_recent_tracking', JSON.stringify(updated));
+      localStorage.setItem('agl_recent_tracking', JSON.stringify(updated));
     } catch (e) {
       // ignore
     }
@@ -167,7 +167,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
           <div className="track-hero-header">
             <h1 className="track-hero-headline animate-fade-in">Track your shipment</h1>
             <p className="track-hero-subtext animate-fade-in">
-              Enter your 8-character SDL tracking ID to see where your shipment is right now.
+              Enter your 8-character AGL tracking ID to see where your shipment is right now.
             </p>
           </div>
 
@@ -178,7 +178,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
               {/* Malformed input (neither a tracking ID nor a quote reference) gets format help;
                   a well-formed ID that isn't on file gets "not found" (same split as /api/track 400/404). */}
               {!parseTrackingInput(notFoundQuery) && !notFoundQuery.trim().toUpperCase().startsWith('QR') ? (
-                <p>Tracking IDs start with DLS and are 8 characters long, e.g. <span className="font-mono">DLS7K2M9</span>.</p>
+                <p>Tracking IDs start with AGL and are 8 characters long, e.g. <span className="font-mono">AGL7K2M9</span>.</p>
               ) : (
                 <p>
                   We couldn't find a shipment with ID <span className="font-mono font-bold">{notFoundQuery.trim().toUpperCase()}</span>. Check the characters and try again, or{' '}
@@ -221,7 +221,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
                   <Search size={22} className="terminal-search-icon" />
                   <input
                     type="text"
-                    placeholder="e.g. DLS7K2M9"
+                    placeholder="e.g. AGL7K2M9"
                     aria-label="Tracking ID"
                     value={trackingNumber}
                     onChange={(e) => setTrackingNumber(e.target.value)}
@@ -259,7 +259,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
                   value={multiInput}
                   onChange={(e) => setMultiInput(e.target.value)}
                   className="terminal-textarea font-mono"
-                  placeholder="DLS7K2M9&#10;DLS8M4PQ&#10;DLS3J7NK"
+                  placeholder="AGL7K2M9&#10;AGL8M4PQ&#10;AGL3J7NK"
                 />
                 <div className="batch-actions-row">
                   <button type="submit" className="btn-corp-primary terminal-submit-btn">
@@ -327,7 +327,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
                 <Headphones size={24} />
               </div>
               <h3>Your coordinator</h3>
-              <p>Any SDL coordinator can find it from your name, reference or phone number.</p>
+              <p>Any AGL coordinator can find it from your name, reference or phone number.</p>
             </div>
           </div>
         </div>
@@ -440,7 +440,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
                         <p className="batch-not-found-text">
                           {parseTrackingInput(query)
                             ? `We couldn't find a shipment with ID ${query}. Check the characters and try again.`
-                            : 'Tracking IDs start with DLS and are 8 characters long, e.g. DLS7K2M9.'}
+                            : 'Tracking IDs start with AGL and are 8 characters long, e.g. AGL7K2M9.'}
                         </p>
                       </div>
                     );

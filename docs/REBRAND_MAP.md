@@ -52,22 +52,22 @@ The audit below was taken on 2026-10-03; re-run the greps in §5 because line nu
 - [x] `server/index.ts`: health-check service name, startup log.
 - [x] `server/middleware/auth.ts`: `SESSION_COOKIE` string and its comment only.
 - [x] `server/routes/track.ts`: the 400 error text ("starting with DLS…") must use `TRACKING_PREFIX`, not a literal.
-- [ ] `server/routes/*.ts`, `server/db.ts`: comments that mention SDL/DLS.
+- [x] `server/routes/*.ts`, `server/db.ts`: comments that mention SDL/DLS.
 
 **D. Shared + client code**
-- [ ] `src/shared/references.ts`: prefixes and `REFERENCE_PATTERN`.
-- [ ] `src/shared/trackingId.ts`: comments/examples only (the logic reads `TRACKING_PREFIX`).
-- [ ] `src/App.tsx`: `PAGE_META` descriptions ("SDL tracking ID", "trust SDL", "an SDL coordinator", …).
-- [ ] Tracking-ID examples and placeholders: `TrackPage.tsx`, `HomePage.tsx` (FAQ + demo barcode), `ContactPage.tsx`, `SupportModal.tsx`, `src/data/helpArticles.ts`, `CreateShipmentView.tsx` (`DLS·····` placeholder).
-- [ ] `src/components/DocumentBrand.tsx`: pouch name, footer line.
-- [ ] `src/data/legalDocs.ts`: company name, short name, cookie name `agl.sid`, storage keys.
+- [x] `src/shared/references.ts`: prefixes and `REFERENCE_PATTERN`.
+- [x] `src/shared/trackingId.ts`: comments/examples only (the logic reads `TRACKING_PREFIX`).
+- [x] `src/App.tsx`: `PAGE_META` descriptions ("SDL tracking ID", "trust SDL", "an SDL coordinator", …).
+- [x] Tracking-ID examples and placeholders: `TrackPage.tsx`, `HomePage.tsx` (FAQ + demo barcode), `ContactPage.tsx`, `SupportModal.tsx`, `src/data/helpArticles.ts`, `CreateShipmentView.tsx` (`DLS·····` placeholder).
+- [x] `src/components/DocumentBrand.tsx`: pouch name, footer line.
+- [x] `src/data/legalDocs.ts`: company name, short name, cookie name `agl.sid`, storage keys.
 - [ ] Alt text in pages for the four replaced photos (BRAND_GUIDE §7, CONTENT §12).
-- [ ] localStorage keys (3).
+- [x] localStorage keys (3).
 - [ ] CSS file header comments ("SDL GLOBAL LOGISTICS — …") in ~14 files; `tokens.css` header (describe the palette without naming a company).
 
 **E. Assets + tests**
 - [ ] `scripts/optimize-images.mjs`: output names/paths, header comment, photo sources (BRAND_GUIDE §7).
-- [ ] `scripts/trackingId.test.ts`, `scripts/references.test.ts`: `DLS`→`AGL`, `dls`→`agl`, `SDL-`→`AGL-` (including `'d-l-s-7-k-2-m-9'` → `'a-g-l-7-k-2-m-9'`). Leave the deliberately *invalid* samples invalid.
+- [x] `scripts/trackingId.test.ts`, `scripts/references.test.ts`: `DLS`→`AGL`, `dls`→`agl`, `SDL-`→`AGL-` (including `'d-l-s-7-k-2-m-9'` → `'a-g-l-7-k-2-m-9'`). Leave the deliberately *invalid* samples invalid.
 - [ ] Delete `Public/brand/sdl-*.png` and `Public/images/sdl/` once the `agl` versions are generated and wired in.
 
 ## 3. Scripted CSS prefix sweep (one commit, nothing else in it)

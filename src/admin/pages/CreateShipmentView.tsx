@@ -343,7 +343,7 @@ export const CreateShipmentView: React.FC<CreateShipmentViewProps> = ({
   // STEP 7 / Creation State
   // ----------------------------------------------------
   // Set from the server's response on create: the server assigns every tracking ID
-  // (BRAND_GUIDE §7). Until then the UI shows the DLS····· placeholder.
+  // (BRAND_GUIDE §7). Until then the UI shows the AGL····· placeholder.
   const [generatedTrackingNumber, setGeneratedTrackingNumber] = useState<string>('');
   const [createdShipmentRecord, setCreatedShipmentRecord] = useState<Shipment | null>(null);
   const [isCopied, setIsCopied] = useState(false);
@@ -713,7 +713,7 @@ export const CreateShipmentView: React.FC<CreateShipmentViewProps> = ({
       finalPrice
     };
     try {
-      localStorage.setItem('sdl_admin_shipment_draft', JSON.stringify(draftData));
+      localStorage.setItem('agl_admin_shipment_draft', JSON.stringify(draftData));
       setDraftSavedToast('Draft manifest saved to local session.');
       setTimeout(() => setDraftSavedToast(null), 3000);
     } catch {
@@ -746,7 +746,7 @@ export const CreateShipmentView: React.FC<CreateShipmentViewProps> = ({
   const handleFinalCreateShipment = async () => {
     if (isCreatingShipment) return;
     setIsCreatingShipment(true);
-    // Piece labels (DLSxxxxx-NN) are stamped from the server-assigned ID in createShipment.
+    // Piece labels (AGLxxxxx-NN) are stamped from the server-assigned ID in createShipment.
     const formattedPieces = shipmentType === 'Vehicle'
       ? [
           {
@@ -2652,7 +2652,7 @@ export const CreateShipmentView: React.FC<CreateShipmentViewProps> = ({
                           className="font-mono"
                           value={docSealNumber}
                           onChange={e => setDocSealNumber(e.target.value.toUpperCase())}
-                          placeholder="SDL-SL-892401"
+                          placeholder="AGL-SL-892401"
                         />
                         <span className="field-hint-txt" style={{ fontSize: '0.65rem' }}>Sequential tamper-evident barcode seal</span>
                       </div>
