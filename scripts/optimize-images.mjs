@@ -1,4 +1,4 @@
-// Prepares SDL brand assets and responsive photos from the untouched originals in images/.
+// Prepares brand assets and responsive photos from the untouched originals in images/.
 // Run with: node scripts/optimize-images.mjs            (everything)
 //           node scripts/optimize-images.mjs --icons    (favicon and app icons only)
 // Outputs: Public/brand/* (logos, icons, OG image) and Public/images/sdl/* (WebP + JPG per width),
@@ -24,29 +24,10 @@ fs.mkdirSync(BRAND_OUT, { recursive: true });
 fs.mkdirSync(PHOTO_OUT, { recursive: true });
 
 // ---------------------------------------------------------------------------------------------
-// Logo: the supplied logo is a JPEG on white. "Colour to alpha" against white keeps the
-// anti-aliased edges smooth instead of leaving a white fringe.
+// Logo: the supplied logo is a PNG with a transparent background, so it is used as is.
 // ---------------------------------------------------------------------------------------------
-async function whiteToAlpha(input) {
-  const { data, info } = await sharp(input).removeAlpha().raw().toBuffer({ resolveWithObject: true });
-  const out = Buffer.alloc(info.width * info.height * 4);
-  const LOW = 190; // at or below this "whiteness" a pixel is fully opaque
-  const HIGH = 238; // at or above this it is background (JPEG noise keeps the paper at ~240-255)
-  for (let i = 0, j = 0; i < data.length; i += 3, j += 4) {
-    const r = data[i], g = data[i + 1], b = data[i + 2];
-    const whiteness = Math.min(r, g, b);
-    let a = whiteness <= LOW ? 1 : 1 - (whiteness - LOW) / (HIGH - LOW);
-    a = Math.max(0, Math.min(1, a));
-    if (a > 0) {
-      // Un-blend from white so edge pixels keep their true colour.
-      out[j] = Math.max(0, Math.min(255, Math.round((r - 255 * (1 - a)) / a)));
-      out[j + 1] = Math.max(0, Math.min(255, Math.round((g - 255 * (1 - a)) / a)));
-      out[j + 2] = Math.max(0, Math.min(255, Math.round((b - 255 * (1 - a)) / a)));
-    }
-    out[j + 3] = Math.round(a * 255);
-  }
-  return sharp(out, { raw: { width: info.width, height: info.height, channels: 4 } }).png().toBuffer();
-}
+const LOGO_SRC = path.join(SRC, 'advanced-logo.png');
+const loadLogo = () => sharp(LOGO_SRC).ensureAlpha().png().toBuffer();
 
 // How strongly a pixel reads as the logo's red (0 = neutral grey/black/white).
 const redness = (r, g, b) => r - Math.max(g, b);
@@ -63,24 +44,44 @@ async function toWhiteVersion(pngBuffer) {
   return sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } }).png().toBuffer();
 }
 
-// Keeps only the red parts of an image (the globe, arrow and parcel of the mark).
-async function redOnly(pngBuffer) {
-  const { data, info } = await sharp(pngBuffer).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  for (let i = 0; i < data.length; i += 4) {
-    const red = redness(data[i], data[i + 1], data[i + 2]);
-    if (red < RED_MIN) data[i + 3] = 0;
-    else if (red < RED_MIN + 40) data[i + 3] = Math.round(data[i + 3] * (red - RED_MIN) / 40); // soft edge
+// Icon mark: the globe with its orbit arrow inside the "G", in full colour (the globe has black
+// continents, so it is not reduced to red). A transparent gap separates the globe, orbit and
+// arrow from the letters around them, so the mark is cut out as the opaque regions connected to
+// a few seed points inside the crop box, plus a 2 px rim so anti-aliased edges stay soft.
+// Box and seeds measured on the 2025x777 original (the arrow tip reaches x 1485).
+async function buildSquareMark(logo) {
+  const MARK = { left: 900, top: 120, width: 620, height: 360 };
+  const SEEDS = [[1157, 250], [1157, 400], [980, 330]]; // upper globe, lower globe, orbit + arrow
+  const SOLID = 96; // alpha at or above this joins a region
+  const RIM = 2;
+  const { data, info } = await sharp(logo).extract(MARK).raw().toBuffer({ resolveWithObject: true });
+  const { width: w, height: h } = info;
+  const keep = new Uint8Array(w * h);
+  for (const [sx, sy] of SEEDS) {
+    const stack = [(sy - MARK.top) * w + (sx - MARK.left)];
+    while (stack.length) {
+      const k = stack.pop();
+      if (keep[k] || data[k * 4 + 3] < SOLID) continue;
+      keep[k] = 1;
+      const x = k % w;
+      if (x > 0) stack.push(k - 1);
+      if (x < w - 1) stack.push(k + 1);
+      if (k >= w) stack.push(k - w);
+      if (k < w * (h - 1)) stack.push(k + w);
+    }
   }
-  return sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } }).png().toBuffer();
-}
-
-// Icon mark: the red globe, arrow and parcel that form the "D", without the black letterforms
-// behind them, centred on a transparent square. Crop box measured on the 1170x626 original
-// (includes the arrow tip over the "L").
-async function buildSquareMark(transparent) {
-  const MARK = { left: 538, top: 95, width: 372, height: 250 };
-  const markRed = await redOnly(await sharp(transparent).extract(MARK).png().toBuffer());
-  const mark = await sharp(markRed).trim({ threshold: 1 }).png().toBuffer();
+  for (let pass = 0; pass < RIM; pass++) {
+    const grown = keep.slice();
+    for (let k = 0; k < w * h; k++) {
+      if (keep[k]) continue;
+      const x = k % w;
+      if ((x > 0 && keep[k - 1]) || (x < w - 1 && keep[k + 1]) || (k >= w && keep[k - w]) || (k < w * (h - 1) && keep[k + w])) grown[k] = 1;
+    }
+    keep.set(grown);
+  }
+  for (let k = 0; k < w * h; k++) if (!keep[k]) data[k * 4 + 3] = 0;
+  const cut = await sharp(data, { raw: { width: w, height: h, channels: 4 } }).png().toBuffer();
+  const mark = await sharp(cut).trim({ threshold: 1 }).png().toBuffer();
   const markMeta = await sharp(mark).metadata();
   const side = Math.max(markMeta.width, markMeta.height);
   return sharp(mark)
@@ -126,15 +127,15 @@ async function buildIcons(squareMark) {
 }
 
 async function buildBrand() {
-  const transparent = await whiteToAlpha(path.join(SRC, 'logo.jpeg'));
-  const trimmed = await sharp(transparent).trim({ threshold: 1 }).png().toBuffer();
-  await sharp(trimmed).png({ palette: true, quality: 90, effort: 10, compressionLevel: 9 }).toFile(path.join(BRAND_OUT, 'sdl-logo.png'));
+  const logo = await loadLogo();
+  const trimmed = await sharp(logo).trim({ threshold: 1 }).png().toBuffer();
+  await sharp(trimmed).png({ palette: true, quality: 90, effort: 10, compressionLevel: 9 }).toFile(path.join(BRAND_OUT, 'agl-logo.png'));
 
   const white = await toWhiteVersion(trimmed);
-  await sharp(white).png({ palette: true, quality: 90, effort: 10, compressionLevel: 9 }).toFile(path.join(BRAND_OUT, 'sdl-logo-white.png'));
+  await sharp(white).png({ palette: true, quality: 90, effort: 10, compressionLevel: 9 }).toFile(path.join(BRAND_OUT, 'agl-logo-white.png'));
 
-  const squareMark = await buildSquareMark(transparent);
-  await sharp(squareMark).png({ palette: true, quality: 90, effort: 10, compressionLevel: 9 }).toFile(path.join(BRAND_OUT, 'sdl-mark.png'));
+  const squareMark = await buildSquareMark(logo);
+  await sharp(squareMark).png({ palette: true, quality: 90, effort: 10, compressionLevel: 9 }).toFile(path.join(BRAND_OUT, 'agl-mark.png'));
   await buildIcons(squareMark);
 
   // OG image 1200x630 from the landscape hero.
@@ -240,7 +241,7 @@ export type SdlImageName = keyof typeof SDL_IMAGES;
 
 // --icons rebuilds only the icon set, leaving the logos, OG image and photos untouched.
 if (process.argv.includes('--icons')) {
-  await buildIcons(await buildSquareMark(await whiteToAlpha(path.join(SRC, 'logo.jpeg'))));
+  await buildIcons(await buildSquareMark(await loadLogo()));
   console.log('Icons done.');
 } else {
   await buildBrand();

@@ -66,7 +66,7 @@ The audit below was taken on 2026-10-03; re-run the greps in §5 because line nu
 - [x] CSS file header comments ("SDL GLOBAL LOGISTICS — …") in ~14 files; `tokens.css` header (describe the palette without naming a company).
 
 **E. Assets + tests**
-- [ ] `scripts/optimize-images.mjs`: output names/paths, header comment, photo sources (BRAND_GUIDE §7).
+- [~] `scripts/optimize-images.mjs`: output names/paths, header comment, photo sources (BRAND_GUIDE §7). *(Logo, mark and icons done in 3.1; photo folder/manifest names and sources in 3.2.)*
 - [x] `scripts/trackingId.test.ts`, `scripts/references.test.ts`: `DLS`→`AGL`, `dls`→`agl`, `SDL-`→`AGL-` (including `'d-l-s-7-k-2-m-9'` → `'a-g-l-7-k-2-m-9'`). Leave the deliberately *invalid* samples invalid.
 - [ ] Delete `Public/brand/sdl-*.png` and `Public/images/sdl/` once the `agl` versions are generated and wired in.
 
