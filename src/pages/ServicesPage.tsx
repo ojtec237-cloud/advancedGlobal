@@ -13,7 +13,7 @@ import {
   Car
 } from 'lucide-react';
 import { ResponsiveImage } from '../components/ResponsiveImage';
-import { SdlImageName } from '../data/sdlImages';
+import { AglImageName } from '../data/aglImages';
 import { COMPANY_SHORT } from '../config/brand';
 import './ServicesPage.css';
 
@@ -120,7 +120,7 @@ const SERVICE_TIERS: ServiceTier[] = [
 ];
 
 // CONTENT.md §3.3; bullets reuse §2.6, photos and alt text from §12.
-const INDUSTRIES: { id: string; title: string; icon: React.ReactNode; desc: string; bullets: string[]; image: SdlImageName; alt: string }[] = [
+const INDUSTRIES: { id: string; title: string; icon: React.ReactNode; desc: string; bullets: string[]; image: AglImageName; alt: string }[] = [
   {
     id: 'healthcare',
     title: 'Healthcare & Life Sciences',

@@ -32,7 +32,7 @@ import {
 import { Barcode } from '../components/Barcode';
 import { HomeNetworkMap } from '../components/HomeNetworkMap';
 import { ResponsiveImage } from '../components/ResponsiveImage';
-import { SdlImageName } from '../data/sdlImages';
+import { AglImageName } from '../data/aglImages';
 import { GATEWAYS, getGateway, getLanePartners, formatGatewayTime } from '../data/gateways';
 import { useNow } from '../utils/useNow';
 import { useCompanyContact } from '../utils/useCompanyContact';
@@ -48,7 +48,7 @@ interface HomePageProps {
 type IndustryTab = 'auto' | 'medical' | 'ecommerce' | 'tech';
 
 // Copy: docs/CONTENT.md §2. Alt text: CONTENT.md §12.
-const SERVICES: { title: string; body: string; cta: string; image: SdlImageName; alt: string }[] = [
+const SERVICES: { title: string; body: string; cta: string; image: AglImageName; alt: string }[] = [
   {
     title: 'Priority Express Courier',
     body: 'Time-critical documents and parcels, door to door, with the fastest available routing and customs pre-clearance where possible.',
@@ -79,7 +79,7 @@ const SERVICES: { title: string; body: string; cta: string; image: SdlImageName;
   }
 ];
 
-const INDUSTRIES: { id: IndustryTab; icon: React.ReactNode; title: string; body: string; bullets: string[]; image: SdlImageName; alt: string }[] = [
+const INDUSTRIES: { id: IndustryTab; icon: React.ReactNode; title: string; body: string; bullets: string[]; image: AglImageName; alt: string }[] = [
   {
     id: 'auto',
     icon: <Car size={16} />,
