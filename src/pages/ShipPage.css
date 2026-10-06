@@ -17,7 +17,7 @@
    ============================================================ */
 .agl-ship-hero {
   position: relative;
-  background-image: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&auto=format&fit=crop&q=85');
+  background-image: url('/images/agl/ship-hero-1600.jpg');
   background-size: cover;
   background-position: center 40%;
   color: var(--agl-white);

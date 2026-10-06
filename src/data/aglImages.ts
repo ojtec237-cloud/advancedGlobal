@@ -14,6 +14,8 @@ export const AGL_IMAGES = {
   'callback-banner': { width: 2400, height: 800, widths: [640, 1024, 1600, 2400] },
   'services-hero': { width: 2400, height: 1000, widths: [640, 1024, 1600, 2400] },
   'about-hero': { width: 2400, height: 1000, widths: [640, 1024, 1600, 2400] },
+  'ship-hero': { width: 2400, height: 1350, widths: [640, 1024, 1600, 2400] },
+  'quote-result-hero': { width: 2400, height: 1350, widths: [640, 1024, 1600, 2400] },
   'service-priority-express': { width: 340, height: 340, widths: [340, 640, 1024, 1400] },
   'service-freight-linehaul': { width: 340, height: 340, widths: [340, 640, 1024, 1400] },
   'service-vehicle-transport': { width: 340, height: 340, widths: [340] },

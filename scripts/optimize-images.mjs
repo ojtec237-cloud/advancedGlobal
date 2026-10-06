@@ -162,6 +162,9 @@ const PHOTOS = [
   // 'bottom' would cut the crane tops off, so About uses the centre band.
   { name: 'services-hero', src: HERO_SRC, kind: 'hero', aspect: 12 / 5, position: 'top' },
   { name: 'about-hero', src: HERO_SRC, kind: 'hero', aspect: 12 / 5, position: 'centre' },
+  // CSS background heroes (no srcset): ShipPage.css and PublicQuoteResultPage.css use the 1600 px JPG.
+  { name: 'ship-hero', src: 'free-pexels/hero-port-ship-sunset.jpg', kind: 'hero', aspect: 16 / 9 },
+  { name: 'quote-result-hero', src: 'free-pexels/truck-white-mountain-road.jpg', kind: 'hero', aspect: 16 / 9 },
   { name: 'service-priority-express', src: 'free-pexels/service-priority-express.jpg', kind: 'card' },
   { name: 'service-freight-linehaul', src: 'free-pexels/freight-dock-worker-sunset.jpg', kind: 'card' },
   { name: 'service-vehicle-transport', src: 'free-cc0/service-vehicle-transport.webp', kind: 'card' },
