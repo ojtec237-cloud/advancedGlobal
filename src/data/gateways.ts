@@ -41,7 +41,7 @@ export const GATEWAYS: Gateway[] = [
 
 // Scheduled trade lanes, drawn as great-circle arcs (CONTENT.md §9).
 export const TRADE_LANES: [string, string][] = [
-  ['LOS', 'LHR'], ['LOS', 'DXB'], ['LOS', 'JFK'], ['LHR', 'JFK'], ['DXB', 'SIN'],
+  ['LOS', 'DXB'], ['LOS', 'JFK'], ['LHR', 'JFK'], ['DXB', 'SIN'],
   ['SIN', 'SYD'], ['PVG', 'RTM'], ['HKG', 'LAX'], ['FRA', 'DXB'], ['JNB', 'DXB'],
   ['NBO', 'LHR'], ['GRU', 'JFK'], ['IAH', 'RTM'], ['YYZ', 'LHR'], ['BOM', 'DXB'],
 ];
@@ -50,9 +50,10 @@ export function getGateway(code: string): Gateway | undefined {
   return GATEWAYS.find((g) => g.code === code);
 }
 
-// Codes of every gateway with a direct lane to `code`.
+// Codes of every gateway with a direct lane to `code`, in GATEWAYS order.
 export function getLanePartners(code: string): string[] {
-  return TRADE_LANES.flatMap(([a, b]) => (a === code ? [b] : b === code ? [a] : []));
+  const partners = TRADE_LANES.flatMap(([a, b]) => (a === code ? [b] : b === code ? [a] : []));
+  return GATEWAYS.map((g) => g.code).filter((c) => partners.includes(c));
 }
 
 // Local wall-clock time at a gateway, e.g. { time: '14:05', offset: 'GMT+1' }.
