@@ -100,7 +100,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       <section className="about-hero-section">
         <ResponsiveImage
           name="about-hero"
-          alt="Truck and container ship on the quay at sunset"
+          alt="Four ship-to-shore cranes on a lit quay at dusk"
           eager
           sizes="100vw"
           className="about-hero-media"

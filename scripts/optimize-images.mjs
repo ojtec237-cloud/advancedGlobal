@@ -15,10 +15,12 @@ const MANIFEST_OUT = path.join(ROOT, 'src', 'data', 'aglImages.ts');
 
 const STEP_WIDTHS = [640, 1024, 1600, 2400];
 // Every card/tile photo is cropped to this exact square so rows line up at the same height.
-// 340 px is the largest square every supplied brand-img file can fill without upscaling.
+// 340 px is the card size the layout was built around; smaller sources are never upscaled.
 const CARD_SIZE = 340;
 // Larger square variants for retina screens, emitted only when the source is big enough.
 const CARD_STEP_SIZES = [640, 1024, 1400];
+// Landscape hero photo: Home hero, Track, Services, About, callback banner and the OG image.
+const HERO_SRC = 'free-pexels/hero-port-cranes-night.jpg';
 
 fs.mkdirSync(BRAND_OUT, { recursive: true });
 fs.mkdirSync(PHOTO_OUT, { recursive: true });
@@ -139,7 +141,7 @@ async function buildBrand() {
   await buildIcons(squareMark);
 
   // OG image 1200x630 from the landscape hero.
-  await sharp(path.join(SRC, 'landingimage.png')).resize(1200, 630, { fit: 'cover', position: 'centre' })
+  await sharp(path.join(SRC, HERO_SRC)).resize(1200, 630, { fit: 'cover', position: 'centre' })
     .jpeg({ quality: 82, mozjpeg: true }).toFile(path.join(BRAND_OUT, 'og-image.jpg'));
 }
 
@@ -149,26 +151,28 @@ async function buildBrand() {
 // kind 'card' = fixed CARD_SIZE square (plus 640 when the source allows it).
 // kind 'hero' = keeps the given aspect ratio, widths from STEP_WIDTHS up to the source width.
 const PHOTOS = [
-  { name: 'hero-home', src: 'landingimage.png', kind: 'hero', aspect: 16 / 9 },
-  { name: 'hero-home-mobile', src: 'landingimage-mobile.png', kind: 'hero', aspect: 9 / 16 },
-  { name: 'track-hero', src: 'landingimage.png', kind: 'hero', aspect: 2 / 1 },
+  { name: 'hero-home', src: HERO_SRC, kind: 'hero', aspect: 16 / 9 },
+  // Separate portrait photo for phones (a 9:16 crop of the landscape hero would look zoomed in).
+  { name: 'hero-home-mobile', src: 'free-pexels/hero-mobile-port-sunset-plane.jpg', kind: 'hero', aspect: 9 / 16 },
+  { name: 'track-hero', src: HERO_SRC, kind: 'hero', aspect: 2 / 1 },
   { name: 'locations-hero', src: 'free-cc0/locations-hero.webp', kind: 'hero', aspect: 2 / 1 },
-  // Wide strip behind the Home callback banner (only the landing image is large enough).
-  { name: 'callback-banner', src: 'landingimage.png', kind: 'hero', aspect: 3 / 1 },
-  // Services and About heroes: two different bands of the landing image until dedicated photos exist.
-  { name: 'services-hero', src: 'landingimage.png', kind: 'hero', aspect: 12 / 5, position: 'top' },
-  { name: 'about-hero', src: 'landingimage.png', kind: 'hero', aspect: 12 / 5, position: 'bottom' },
+  // Wide strip behind the Home callback banner.
+  { name: 'callback-banner', src: HERO_SRC, kind: 'hero', aspect: 3 / 1 },
+  // Services and About heroes: two different bands of the hero photo until dedicated photos exist.
+  // 'bottom' would cut the crane tops off, so About uses the centre band.
+  { name: 'services-hero', src: HERO_SRC, kind: 'hero', aspect: 12 / 5, position: 'top' },
+  { name: 'about-hero', src: HERO_SRC, kind: 'hero', aspect: 12 / 5, position: 'centre' },
   { name: 'service-priority-express', src: 'free-pexels/service-priority-express.jpg', kind: 'card' },
-  { name: 'service-freight-linehaul', src: 'free-pexels/service-freight-linehaul.jpg', kind: 'card' },
+  { name: 'service-freight-linehaul', src: 'free-pexels/freight-dock-worker-sunset.jpg', kind: 'card' },
   { name: 'service-vehicle-transport', src: 'free-cc0/service-vehicle-transport.webp', kind: 'card' },
   { name: 'service-secure-vault', src: 'free-cc0/service-secure-vault.webp', kind: 'card' },
-  { name: 'industry-healthcare', src: 'site/healthcare-pharma.jpg', kind: 'card' },
+  { name: 'industry-healthcare', src: 'free-pexels/industry-health-vaccine-box.jpg', kind: 'card' },
   { name: 'industry-technology', src: 'free-cc0/industry-technology.webp', kind: 'card' },
-  { name: 'industry-automotive', src: 'site/automotive-parts.jpg', kind: 'card' },
-  { name: 'industry-ecommerce', src: 'site/ecommerce-retail.jpg', kind: 'card' },
-  { name: 'track-result-vehicle', src: 'brand-img3.PNG', kind: 'card' },
+  { name: 'industry-automotive', src: 'free-pexels/industry-auto-mechanic-engine.jpg', kind: 'card' },
+  { name: 'industry-ecommerce', src: 'free-pexels/industry-ecom-packing-boutique.jpg', kind: 'card' },
+  { name: 'track-result-vehicle', src: 'free-pexels/truck-white-motion-blur.jpg', kind: 'card' },
   { name: 'about-operations', src: 'free-pexels/about-operations.jpg', kind: 'card' },
-  { name: 'contact-team', src: 'brand-img5.PNG', kind: 'card' },
+  { name: 'contact-team', src: 'free-pexels/team-couriers-loading-van.jpg', kind: 'card' },
   // Shown as a 72 px thumbnail: crop tight on the face.
   { name: 'about-team', src: 'free-pexels/about-team.jpg', kind: 'card', crop: { left: 950, top: 80, width: 900, height: 900 } },
 ];
@@ -204,7 +208,8 @@ async function buildPhotos() {
       manifest[p.name] = { width: base, height: base, widths: variants };
     } else {
       // Largest crop of the requested aspect that fits the source, then the step widths below it.
-      const cropW = Math.min(srcW, Math.floor(srcH * p.aspect));
+      // Capped at the largest step width: bigger files only add download weight.
+      const cropW = Math.min(srcW, Math.floor(srcH * p.aspect), STEP_WIDTHS[STEP_WIDTHS.length - 1]);
       const cropH = Math.round(cropW / p.aspect);
       const widths = STEP_WIDTHS.filter(w => w <= cropW);
       if (!widths.includes(cropW) && (widths.length === 0 || cropW - widths[widths.length - 1] > 200)) widths.push(cropW);

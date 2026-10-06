@@ -495,7 +495,7 @@ export const TrackResultPage: React.FC<TrackResultPageProps> = ({
         <div className="agl-hero-backdrop-img">
           <ResponsiveImage
             name="track-hero"
-            alt="Truck, cargo ship and aircraft at a container port at sunset"
+            alt="Container cranes on a lit quay at dusk, reflected in the harbour"
             eager
             sizes="100vw"
             className="hero-bg-media"
@@ -1309,7 +1309,7 @@ export const TrackResultPage: React.FC<TrackResultPageProps> = ({
           <div className="help-banner-left">
             <ResponsiveImage
               name="track-result-vehicle"
-              alt="Two trucks travelling along a highway at sunset"
+              alt="White lorry driving along a country road at sunset"
               sizes="72px"
               className="help-banner-photo"
               imgClassName="help-banner-photo-img"

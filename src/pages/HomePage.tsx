@@ -61,7 +61,7 @@ const SERVICES: { title: string; body: string; cta: string; image: AglImageName;
     body: 'Air, ocean (FCL and LCL) and road freight on fixed departures, for regular volumes that need predictable transit times.',
     cta: 'Explore Freight',
     image: 'service-freight-linehaul',
-    alt: 'Dock workers on a container ship deck as gantry cranes load stacked containers'
+    alt: 'Dock worker in a hard hat checking a cargo ship beside loading cranes at sunset'
   },
   {
     title: 'Vehicle Shipping & Transport',
@@ -87,7 +87,7 @@ const INDUSTRIES: { id: IndustryTab; icon: React.ReactNode; title: string; body:
     body: 'Spare parts, components and complete vehicles, moved to keep production lines and dealerships running.',
     bullets: ['Line-side parts express', 'Vehicle export & import documentation', 'Enclosed and container shipping'],
     image: 'industry-automotive',
-    alt: 'Mechanic working on a car engine with a spanner'
+    alt: 'Mechanic in overalls working in an open car engine bay'
   },
   {
     id: 'medical',
@@ -96,7 +96,7 @@ const INDUSTRIES: { id: IndustryTab; icon: React.ReactNode; title: string; body:
     body: 'Samples, medical devices and pharmaceuticals handled with care, controlled hand-offs and full traceability.',
     bullets: ['Temperature-sensitive handling (on request)', 'Sealed chain of custody', 'Priority customs lodgement'],
     image: 'industry-healthcare',
-    alt: 'Worker in gloves and a clean-room gown carrying sealed boxes'
+    alt: 'Gloved hands holding a sealed box labelled Vaccine'
   },
   {
     id: 'ecommerce',
@@ -105,7 +105,7 @@ const INDUSTRIES: { id: IndustryTab; icon: React.ReactNode; title: string; body:
     body: 'Cross-border parcels, stock replenishment and returns for growing online brands.',
     bullets: ['Multi-piece shipments under one ID', 'Scheduled consolidations', 'Simple returns with linked tracking'],
     image: 'industry-ecommerce',
-    alt: 'Online seller packing parcels next to a laptop'
+    alt: 'Two women packing parcels next to a laptop in a clothing studio'
   },
   {
     id: 'tech',
@@ -255,7 +255,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
         <ResponsiveImage
           name="hero-home"
           mobileName="hero-home-mobile"
-          alt="Truck at a container port at sunset, with a cargo ship, cranes and an aircraft overhead"
+          alt="Container port at dusk, with cranes and lit quays by the water"
           eager
           sizes="100vw"
           className="corp-hero-media"

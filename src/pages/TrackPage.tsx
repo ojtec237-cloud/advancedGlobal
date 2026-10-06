@@ -156,7 +156,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
       <section className="track-hero-section">
         <ResponsiveImage
           name="track-hero"
-          alt="Truck, cargo ship and aircraft at a container port at sunset"
+          alt="Container cranes on a lit quay at dusk, reflected in the harbour"
           eager
           sizes="100vw"
           className="track-hero-media"
