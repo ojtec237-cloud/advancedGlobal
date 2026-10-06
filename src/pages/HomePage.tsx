@@ -803,7 +803,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
               <div className="thermal-body-grid font-mono">
                 <div className="th-cell">
                   <small>ORIGIN</small>
-                  <strong>LOS (LAGOS)</strong>
+                  <strong>SIN (SINGAPORE)</strong>
                 </div>
                 <div className="th-cell">
                   <small>DESTINATION</small>
