@@ -61,14 +61,14 @@ The audit below was taken on 2026-10-03; re-run the greps in §5 because line nu
 - [x] Tracking-ID examples and placeholders: `TrackPage.tsx`, `HomePage.tsx` (FAQ + demo barcode), `ContactPage.tsx`, `SupportModal.tsx`, `src/data/helpArticles.ts`, `CreateShipmentView.tsx` (`DLS·····` placeholder).
 - [x] `src/components/DocumentBrand.tsx`: pouch name, footer line.
 - [x] `src/data/legalDocs.ts`: company name, short name, cookie name `agl.sid`, storage keys.
-- [ ] Alt text in pages for the four replaced photos (BRAND_GUIDE §7, CONTENT §12).
+- [x] Alt text in pages for the four replaced photos (BRAND_GUIDE §7, CONTENT §12). *(3.2: every replaced photo, 13 alts.)*
 - [x] localStorage keys (3).
 - [x] CSS file header comments ("SDL GLOBAL LOGISTICS — …") in ~14 files; `tokens.css` header (describe the palette without naming a company).
 
 **E. Assets + tests**
-- [~] `scripts/optimize-images.mjs`: output names/paths, header comment, photo sources (BRAND_GUIDE §7). *(Logo, mark and icons done in 3.1; photo folder/manifest names and sources in 3.2.)*
+- [x] `scripts/optimize-images.mjs`: output names/paths, header comment, photo sources (BRAND_GUIDE §7). *(Logo, mark and icons done in 3.1; photo folder/manifest names and sources in 3.2.)*
 - [x] `scripts/trackingId.test.ts`, `scripts/references.test.ts`: `DLS`→`AGL`, `dls`→`agl`, `SDL-`→`AGL-` (including `'d-l-s-7-k-2-m-9'` → `'a-g-l-7-k-2-m-9'`). Leave the deliberately *invalid* samples invalid.
-- [ ] Delete `Public/brand/sdl-*.png` and `Public/images/sdl/` once the `agl` versions are generated and wired in.
+- [ ] Delete `Public/brand/sdl-*.png` and `Public/images/sdl/` once the `agl` versions are generated and wired in. *(`Public/images/sdl/` was renamed to `agl/` in 3.2; `Public/brand/sdl-*.png` remain for 3.3.)*
 
 ## 3. Scripted CSS prefix sweep (one commit, nothing else in it)
 
@@ -86,7 +86,7 @@ About 2,760 occurrences of `--sdl-*` and `sdl-*` across `src/**/*.css` and `*.ts
 ## 4. Things that are not strings
 - [ ] **Admin password:** new `ADMIN_PASSWORD_HASH` and new `SESSION_SECRET` (DEPLOYMENT §4). The owner generates them; never reuse the old ones.
 - [ ] **Database:** fresh and empty. Do not copy the existing `data/*.db`. Locally, move the old file out of `data/` before testing.
-- [ ] **Logo + photos:** logo `images/advanced-logo.png` (BRAND_GUIDE §5); free unbranded Pexels/CC0 photos (BRAND_GUIDE §7).
+- [~] **Logo + photos:** logo `images/advanced-logo.png` (BRAND_GUIDE §5); free unbranded Pexels/CC0 photos (BRAND_GUIDE §7). *(Photos done in 3.2; logo waits for the corrected spelling, Needs owner #7.)*
 - [ ] **Domain/DNS/email:** DEPLOYMENT §5–6.
 
 ## 5. Final sweep (must return nothing)

@@ -165,6 +165,14 @@ others off Unsplash is optional and outside the one-hour scope; note it in the t
 **Alt text:** write it for every new photo in `docs/CONTENT.md §12` (replacing the `[NEW PHOTO]` markers) and in the
 pages, describing what the photo actually shows.
 
+**Status 2026-10-06 (tracker 3.2):** all four branded slots, the Freight & Linehaul card (it showed P&O Nedlloyd and
+OOCL containers) and the three `images/site/` industry cards (no licence record) now use Pexels photos, recorded in
+`images/free-pexels/SOURCES.md`. Hotlinked heroes: Ship (Maersk/SSA) and Quote result (Scania badge, operator
+name) moved to the pipeline as `ship-hero` / `quote-result-hero`. Help and Legal are clean; Contact (blurred T-shirt
+print) and Quote (small restaurant signage) are minor and stay on Unsplash for now. Kept stock checked by eye: no
+logos, except `service-priority-express`, where a fragment of an airline tail logo shows behind the wing (kept: no
+unbranded cargo-aircraft photo was found).
+
 ## 8. UI details: unchanged
 
 Radius, shadows, buttons (the Track button uses the accent), icons (lucide-react), status chips (semantic colours only).

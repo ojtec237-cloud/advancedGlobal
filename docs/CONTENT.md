@@ -475,29 +475,31 @@ Presented as "gateways we serve". Don't describe them as AGL-owned facilities un
 
 ## 12. Image alt text
 Approved 2026-09-26. Files are generated into `Public/images/agl/` by `scripts/optimize-images.mjs`.
-**Rebrand:** rows marked `[NEW PHOTO]` use the previous company's branded photos. Write their alt text from the new owner-supplied photo (describe what it actually shows), then remove the marker.
+**Rebrand (2026-10-06):** the previous company's branded photos are replaced with free, unbranded Pexels photos (BRAND_GUIDE §7, sources in `images/free-pexels/SOURCES.md`). The Home hero has one alt for both photos, so it describes what they share.
 
 | Image (slot) | Source | Alt |
 |---|---|---|
-| hero-home / hero-home-mobile | images/landingimage(-mobile).png | `[NEW PHOTO]` describe the new photo |
-| callback-banner | images/landingimage.png (3:1 crop) | (decorative background behind the callback form, empty alt) |
-| services-hero | images/landingimage.png (12:5, top band) | `[NEW PHOTO]` describe the new photo |
-| about-hero | images/landingimage.png (12:5, bottom band) | `[NEW PHOTO]` describe the new photo |
-| track-hero | images/landingimage.png (2:1 crop) | `[NEW PHOTO]` describe the new photo |
+| hero-home / hero-home-mobile | images/free-pexels/hero-port-cranes-night.jpg / hero-mobile-port-sunset-plane.jpg | Container port at dusk, with cranes and lit quays by the water |
+| callback-banner | images/free-pexels/hero-port-cranes-night.jpg (3:1 crop) | (decorative background behind the callback form, empty alt) |
+| services-hero | images/free-pexels/hero-port-cranes-night.jpg (12:5, top band) | Ship-to-shore cranes against an evening sky at a container port |
+| about-hero | images/free-pexels/hero-port-cranes-night.jpg (12:5, centre band) | Four ship-to-shore cranes on a lit quay at dusk |
+| track-hero | images/free-pexels/hero-port-cranes-night.jpg (2:1 crop) | Container cranes on a lit quay at dusk, reflected in the harbour |
+| ship-hero | images/free-pexels/hero-port-ship-sunset.jpg (CSS background, ShipPage.css) | (decorative CSS background, no alt) |
+| quote-result-hero | images/free-pexels/truck-white-mountain-road.jpg (CSS background, PublicQuoteResultPage.css) | (decorative CSS background, no alt) |
 | locations-hero | images/free-cc0/locations-hero.webp | Aerial view of rows of shipping containers at a port terminal |
 | service-priority-express | images/free-pexels/service-priority-express.jpg | Ground crew raising a cargo pallet to the hold door of a wide-body aircraft |
-| service-freight-linehaul | images/free-pexels/service-freight-linehaul.jpg | Dock workers on a container ship deck as gantry cranes load stacked containers |
+| service-freight-linehaul | images/free-pexels/freight-dock-worker-sunset.jpg | Dock worker in a hard hat checking a cargo ship beside loading cranes at sunset |
 | service-vehicle-transport | images/free-cc0/service-vehicle-transport.webp | Roll-on/roll-off vehicle carrier ship berthed at a harbour quay |
 | service-secure-vault | images/free-cc0/service-secure-vault.webp | Close-up of the combination lock on a metal security case |
-| industry-healthcare | images/site/healthcare-pharma.jpg | Worker in gloves and a clean-room gown carrying sealed boxes |
+| industry-healthcare | images/free-pexels/industry-health-vaccine-box.jpg | Gloved hands holding a sealed box labelled Vaccine |
 | industry-technology | images/free-cc0/industry-technology.webp | Server rack with network cables and status lights |
-| industry-automotive | images/site/automotive-parts.jpg | Mechanic working on a car engine with a spanner |
-| industry-ecommerce | images/site/ecommerce-retail.jpg | Online seller packing parcels next to a laptop |
-| track-result-vehicle | images/brand-img3.PNG | `[NEW PHOTO]` describe the new photo |
+| industry-automotive | images/free-pexels/industry-auto-mechanic-engine.jpg | Mechanic in overalls working in an open car engine bay |
+| industry-ecommerce | images/free-pexels/industry-ecom-packing-boutique.jpg | Two women packing parcels next to a laptop in a clothing studio |
+| track-result-vehicle | images/free-pexels/truck-white-motion-blur.jpg | White lorry driving along a country road at sunset |
 | about-operations | images/free-pexels/about-operations.jpg | Warehouse staff member checking stock on a tablet between loaded pallet racks |
 | about-team | images/free-pexels/about-team.jpg (cropped) | Smiling support coordinator wearing a headset |
-| contact-team | images/brand-img5.PNG | `[NEW PHOTO]` describe the new photo |
-| og-image | images/landingimage.png | (social preview, no alt needed) |
+| contact-team | images/free-pexels/team-couriers-loading-van.jpg | Two couriers loading parcels into a white van (slot generated but not used by any page yet) |
+| og-image | images/free-pexels/hero-port-cranes-night.jpg | (social preview, no alt needed) |
 
 `hero-globe-fallback` is produced from the 3D globe (no photo needed).
 
